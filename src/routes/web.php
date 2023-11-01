@@ -19,7 +19,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/test',[TestController::class,'test']);
 Route::get('/users', [UserController::class,'users']);
-
+// URLとコントローラーのアクションを結びつける
 
 Route::get('/', function () {
     return view('welcome');
