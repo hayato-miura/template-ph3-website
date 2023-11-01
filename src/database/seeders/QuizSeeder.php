@@ -12,6 +12,9 @@ class QuizSeeder extends Seeder
         Quiz::create([
             'name' => 'ITクイズ'
         ]);
+        Quiz::create([
+            'name' => '他己紹介クイズ'
+        ]);
         // 他の設問も同様に追加
     }
 }

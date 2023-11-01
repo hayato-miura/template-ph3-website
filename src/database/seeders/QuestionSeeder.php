@@ -1,8 +1,10 @@
 <?php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Question;
+use App\Models\OtherQuestion; // 他己紹介クイズ用のモデルをインポート
 use App\Models\Quiz;
 
 class QuestionSeeder extends Seeder
@@ -11,6 +13,7 @@ class QuestionSeeder extends Seeder
     {
         // ITクイズのクイズIDを取得
         $itQuiz = Quiz::where('name', 'ITクイズ')->first();
+        $otherQuiz = Quiz::where('name', '他己紹介クイズ')->first();
 
         // 設問データを作成し登録
         Question::create([
@@ -23,7 +26,20 @@ class QuestionSeeder extends Seeder
             'text' => '既存業界のビジネスと、先進的なテクノロジーを結びつけて生まれた、新しいビジネスのことをなんと言うでしょう？',
             'quiz_id' => $itQuiz->id,
         ]);
-        // 他の設問も同様に追加
+        // 追加のITクイズを登録
+        Question::create([
+            'image' => '/image/sample.jpg',
+            'text' => 'プログラミング言語Pythonの創始者は誰でしょう？',
+            'quiz_id' => $itQuiz->id,
+        ]);
+
+
+
+        // 他のクイズを登録
+        Question::create([
+            'image' => '/image/sample.jpg',
+            'text' => '三浦颯人の生まれた場所はどこでしょうか？',
+            'quiz_id' => $otherQuiz->id,
+        ]);
     }
 }
-?>

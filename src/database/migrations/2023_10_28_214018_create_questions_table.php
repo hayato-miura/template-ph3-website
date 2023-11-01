@@ -19,7 +19,17 @@ return new class extends Migration
             $table->unsignedBigInteger('quiz_id');
             $table->timestamps();
       
-            $table->foreign('quiz_id')->references('id')->on('quizzes');
+            // $table->foreign('quiz_id')->references('id')->on('quizzes');
+        });
+        Schema::create('other_questions', function (Blueprint $table) {
+            $table->id();
+            $table->string('image')->comment('設問画像 ex.) /image/sample.jpg');
+            $table->string('text')->comment('設問 ex.) 私の生まれた場所はどこでしょうか？');
+            $table->string('supplement')->nullable()->comment('設問補足');
+            $table->unsignedBigInteger('quiz_id');
+            $table->timestamps();
+      
+            // $table->foreign('quiz_id')->references('id')->on('quizzes');
         });
     }
     
@@ -28,6 +38,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('other_questions');
         Schema::dropIfExists('questions');
     }
 };
