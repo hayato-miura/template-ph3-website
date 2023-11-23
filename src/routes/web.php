@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use Tests\TestCase;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/test',[TestController::class,'test']);
 Route::get('/users', [UserController::class,'users']);
+Route::get('post/create',[PostController::class,'create']);
 // URLとコントローラーのアクションを結びつける
 
 Route::get('/', function () {
@@ -44,3 +46,7 @@ Route::get('language/{locale}', function ($locale) {
 
     return redirect()->back();
 });
+
+
+// インプット課題のpost投稿サイト用で投稿データを保存するためのルート設定を追加します
+Route::post('post',[PostController::class,'store'])->name('post.store');
