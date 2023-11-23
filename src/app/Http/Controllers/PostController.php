@@ -17,6 +17,7 @@ class PostController extends Controller
             'title' => $request->title,
             'body' => $request->body
         ]);
-        return back();
+        // $request->session()->flash('message','保存しました');
+        return back()->with('message','保存しました');
     }
 }
