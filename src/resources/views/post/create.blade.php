@@ -16,15 +16,21 @@
             <div class="mt-8">
                 <div>
                     <label for="title" class="font-semibold mt-4">件名</label>
+                    <x-input-error :message="$errors->get('title')" class="mt-2" />
                     <input type="text" name="title" class="w-auto py-2 border border-gray-300 rounded-md"
-                        id="title">
+                        id="title" value="{{ old('title') }}">
+                        {{-- old関数はバリデーションエラー前のエラーの値を残しておくことができる --}}
+                    
                 </div>
             </div>
 
             <div class="w-full flex frex-col">
                 <label for="body" class="font-semibold mt-4">本文</label>
+                <x-input-error :message="$errors->get('body')" class="mt-2"></x-input-error>
                 <textarea name="body" id="body" cols="30" rows="5"
-                    class="w-auto py-2 border border-gray-300 rounded-md "></textarea>
+                    class="w-auto py-2 border border-gray-300 rounded-md ">
+                {{ old('body')}}
+                </textarea>
             </div>
             <x-primary-button class="mt-4">
                 送信する

@@ -17,6 +17,11 @@ class PostController extends Controller
             'title' => $request->title,
             'body' => $request->body
         ]);
+        $validation=$request->validate([
+            'title' => 'required|max:20',
+            'body' => 'required|max:400',
+        ]);
+        $post = Post::create($validation);
         // $request->session()->flash('message','保存しました');
         return back()->with('message','保存しました');
     }
